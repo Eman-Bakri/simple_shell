@@ -6,7 +6,7 @@
  * into multiple tokens
  * @str: string
  * @sprt: seperator we divide based on
- * Return - a pointer to a string having the next token
+ * Return: a pointer to a string having the next token
  * otherwise Null.
 */
 char *_mystrsplit(char *str, const char *sprt)

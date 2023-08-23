@@ -8,7 +8,7 @@
  * and ask user for input
  * @av: argument value
  * @env: envirnment var
- * Return - void
+ * Return: void
  *
 */
 void prompt_display(char **av, char **env)
@@ -26,7 +26,7 @@ void prompt_display(char **av, char **env)
 		if (isatty(STDIN_FILENO))
 		/*isatty for interactive/non interactive mode check*/
 		{
-			printf ("ENTeam$ ");
+			printf("ENTeam$ ");
 			fflush(stdout);
 		}
 		charCount = getline(&str, &tu, stdin);

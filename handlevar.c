@@ -3,7 +3,7 @@
 /**
  * _envhandle - get env var and divide by =
  * @varenv: env variable
- * Return - var or NULL
+ * Return: var or NULL
 */
 char *_envhandle(const char *varenv)
 {
@@ -23,7 +23,7 @@ char *_envhandle(const char *varenv)
 /**
  * _printenv - output env builtin var
  *
- * Return - 0 Sucess
+ * Return: 0 Sucess
 */
 int _printenv(void)
 {
@@ -42,7 +42,7 @@ int _printenv(void)
  * _cmdhandle - handle comands
  * including path variable
  * @cmd: command to be handled
- * Return - full command or NULL
+ * Return: full command or NULL
 */
 char *_cmdhandle(char *cmd)
 {

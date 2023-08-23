@@ -5,13 +5,14 @@
  * and return its length
  *
  * @str: string argent
- * Return - the length of str
+ * Return: the length of str
  *
 */
 unsigned int _strlen(const char *str)
 {
 	unsigned int lengthcount = 0;
-	while(*str !='\0')
+
+	while (*str != '\0')
 	{
 		lengthcount++;
 		str++;
@@ -24,7 +25,7 @@ unsigned int _strlen(const char *str)
  *
  * @deststr: dest string
  * @srcstr: src string
- * Return - the dest str
+ * Return: the dest str
  *
 */
 char *_strcat(char *deststr, const char *srcstr)
@@ -47,8 +48,8 @@ char *_strcat(char *deststr, const char *srcstr)
  *
  * @deststr: dest string
  * @srcstr: src string
- * Return - the pointer dest
- * 
+ * Return: the pointer dest
+ *
 */
 char *_strcpy(char *deststr, const char *srcstr)
 {
@@ -77,7 +78,7 @@ char *_strcpy(char *deststr, const char *srcstr)
  *
  * @str1: first str to compare
  * @str2: second str
- * Return - int value define the result
+ * Return: int value define the result
 */
 int _strcmp(const char *str1, const char *str2)
 {
@@ -93,6 +94,6 @@ int _strcmp(const char *str1, const char *str2)
 		str2++;
 	}
 	/* convert and return ASCII diff */
-	return (*(const unsigned char*)str1 - *(const unsigned char*)str2);
+	return (* (const unsigned char *)str1 - * (const unsigned char *)str2);
 }
 
