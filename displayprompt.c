@@ -14,7 +14,7 @@
 void prompt_display(char **av, char **env)
 {
 	char *str = NULL;
-	int in, m, wtstatus;
+	int m, wtstatus;
 	char *argv[MAX_COMM], *cmd;
 	pid_t chpid; /*child process ID*/
 
@@ -26,13 +26,6 @@ void prompt_display(char **av, char **env)
 			fflush(stdout);
 		}
 		str = got_command(str);
-		in = 0;
-		while (str[in])
-		{
-			if (str[in] == '\n')
-				str[in] = 0;
-			in++;
-		}
 		m = 0;
 		argv[m] = _mystrsplit(str, " ");
 		while (argv[m])
@@ -43,17 +36,14 @@ void prompt_display(char **av, char **env)
 			_printenv();
 		chpid = fork();
 		switch (chpid)
-		{
-			case -1:/*if it is a failure*/
+		{	case -1:/*if it is a failure*/
 				free(str);
 				exit(EXIT_FAILURE);
 				break;
 			case 0: /*when successul*/
 				cmd = _cmdhandle(argv[0]);
 				if (cmd)
-				{
 					execve(cmd, argv, env);
-				}
 				if (execve(argv[0], argv, env) == -1)
 					printf("%s: No such file or directory\n", av[0]);
 				exit(0);
@@ -74,6 +64,7 @@ char *got_command(char *cmd)
 	char *str = NULL;
 	size_t tu = 0; /*Buffer size*/
 	ssize_t charCount;
+	int in;
 
 	charCount = our_getline(&str, &tu, stdin);
 	/*Handle EOF*/
@@ -82,6 +73,13 @@ char *got_command(char *cmd)
 		free(str);
 		free(cmd);
 		exit(EXIT_FAILURE);
+	}
+	in = 0;
+	while (str[in])
+	{
+		if (str[in] == '\n')
+			str[in] = 0;
+		in++;
 	}
 	return (str);
 }
