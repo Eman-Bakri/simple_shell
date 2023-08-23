@@ -55,7 +55,7 @@ void prompt_display(char **av, char **env)
 		/*Handle the env*/
 		if (strcmp(argv[0], "env") == 0)
 		{
-			_printenv(0);
+			_printenv();
 			break;
 		}
 		/*Handle the cd command*/

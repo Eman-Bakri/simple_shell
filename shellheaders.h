@@ -10,7 +10,7 @@ void prompt_display(char **av, char **env);
 char *_envhandle(const char *varenv);
 char *_cmdhandle(char *cmd);
 char *_mystrsplit(char *str, const char *sprt);
-void _printenv(void);
+int _printenv();
 void _comnthandle(char *input);
 
 #endif
