@@ -50,16 +50,15 @@ void prompt_display(char **av, char **env)
 			argv[++m] = _mystrsplit(NULL, " ");
 		}
 		/*Handle the exit*/
-		if (strcmp(argv[0], "exit") == 0)
+		if (_strcmp(argv[0], "exit") == 0)
 			exit(0);
 		/*Handle the env*/
-		if (strcmp(argv[0], "env") == 0)
+		if (_strcmp(argv[0], "env") == 0)
 		{
 			_printenv();
-			break;
 		}
 		/*Handle the cd command*/
-		if (strcmp(argv[0], "cd") == 0)
+		if (_strcmp(argv[0], "cd") == 0)
 		{
 		}
 		chpid = fork();

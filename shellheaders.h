@@ -13,5 +13,10 @@ char *_mystrsplit(char *str, const char *sprt);
 int _printenv();
 void _comnthandle(char *input);
 
+unsigned int _strlen(const char *str);
+char *_strcat(char *deststr, const char *srcstr);
+char *_strcpy(char *deststr, const char *srcstr);
+int _strcmp(const char *str1, const char *str2);
+
 #endif
 
