@@ -6,7 +6,7 @@
  * @av: argument value
  * @env: environment variable
  *
- * Return - 0
+ * Return: 0
 */
 int main(int ac, char **av, char **env)
 {

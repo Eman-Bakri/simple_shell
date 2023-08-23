@@ -14,6 +14,8 @@ char *_cmdhandle(char *cmd);
 char *_mystrsplit(char *str, const char *sprt);
 int _printenv();
 void _comnthandle(char *input);
+ssize_t our_getline(char **lineptr, size_t *num, FILE *stream);
+char *got_command(char *cmd);
 
 unsigned int _strlen(const char *str);
 char *_strcat(char *deststr, const char *srcstr);
