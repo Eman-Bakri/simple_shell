@@ -77,7 +77,7 @@ ssize_t our_getline(char **lineptr, size_t *num, FILE *stream)
 	line_len = buff_read;
 	if (ret != 0)
 		buff_read = 0;
-	_comenthandle(buffer);
+	_comnthandle(buffer);
 	return (line_len);
 }
 
