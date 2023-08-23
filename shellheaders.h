@@ -7,7 +7,10 @@
 #include <string.h>
 
 extern char **environ;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 51d8a4097aa9b5110d2d9d44285614b37c2fd1fe
 void prompt_display(char **av, char **env);
 char *_envhandle(const char *varenv);
 char *_cmdhandle(char *cmd);

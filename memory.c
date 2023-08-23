@@ -22,9 +22,9 @@ void mem_env(void)
 
 /**
  * mem_args - Frees the args memory
- * 
+ *
  * @args: pointer cto arguments.
- * 
+ *
  * @begin: pointer to the beginning of args.
  */
 void mem_args(char **args, char **begin)
@@ -36,6 +36,6 @@ void mem_args(char **args, char **begin)
 	/*free memory allocated for the current argument*/
 		free(args[y]);
 	}
-    /* free memory allocated for the array of arguments*/
+	/* free memory allocated for the array of arguments*/
 	free(begin);
 }

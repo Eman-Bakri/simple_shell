@@ -7,7 +7,6 @@
 */
 char *_envhandle(const char *varenv)
 {
-	extern char **environ;
 	int in = 0;
 	char *q;
 
@@ -27,7 +26,6 @@ char *_envhandle(const char *varenv)
 */
 int _printenv(void)
 {
-	extern char **environ;
 	int m = 0;
 
 	while (environ[m])
