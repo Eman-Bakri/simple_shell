@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <string.h>
 
+extern char **environ;
+
 void prompt_display(char **av, char **env);
 char *_envhandle(const char *varenv);
 char *_cmdhandle(char *cmd);
