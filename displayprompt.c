@@ -26,7 +26,7 @@ void prompt_display(char **av, char **env)
 		if (isatty(STDIN_FILENO))
 		/*isatty for interactive/non interactive mode check*/
 		{
-			write(1, "ENteam$ ", 8);
+			printf ("ENTeam$ ");
 			fflush(stdout);
 		}
 		charCount = getline(&str, &tu, stdin);
