@@ -8,7 +8,7 @@
  * Return - void
  *
 */
-void _comenthandle(char *input)
+void _comnthandle(char *input)
 {
 	int m;
 
