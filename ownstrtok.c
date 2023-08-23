@@ -11,19 +11,16 @@
 */
 char *_mystrsplit(char *str, const char *sprt)
 {
-	/* static char var tracing str index in every call */
-	static char *m;
+	static char *m;/* static var tracing str index in every call */
 
 	/*the beginning passing the str to divide based on */
 	if (str != NULL)
 		m = str;
 	else
 		str = m;
-
 	/*check index*/
 	if (*m == '\0')
 		return (NULL);
-
 	while (*m != '\0')
 	{
 		int in;
@@ -45,8 +42,7 @@ char *_mystrsplit(char *str, const char *sprt)
 				}
 			}
 		}
-		/*return the token*/
-		if (*m == '\0')
+		if (*m == '\0')/*return the token*/
 		{
 			m++;
 			return (str);

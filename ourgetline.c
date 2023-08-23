@@ -15,31 +15,20 @@
  */
 
 ssize_t our_getline(char **lineptr, size_t *num, FILE *stream)
-
 {
 	/* the buff_read stores the number of characters read from the stream */
-
 	static ssize_t buff_read;
 	ssize_t line_len;
 	char curr_char = 'x', *buffer;
 	int ret;
 
-	/* if the buff_read is 0, then flush the stream to ensures that any buffered data is written to the stream */
-
-	if (buff_read == 0)
+	if (buff_read == 0)/* if buff_read 0, flush stream so buff data is written */
 		fflush(stream);
-
-	/* allocate a buffer of size 128 characters to store the line */
-
-	buffer = malloc(sizeof(char) * 128);
+	buffer = malloc(sizeof(char) * 128);/* alloc buff size 128 to store line */
 	if (!buffer)
 		return (-1);
-
-	/* loop to read character by character from the stream */
-	/* if the character is a newline then exit the loop */
-	/* otherwise the character will be stored in the buffer */
-
-	while (curr_char != '\n')
+	/* if the char is a newline then exit the loop */
+	while (curr_char != '\n')/* otherwise char will be stored in buff */
 	{
 		ret = read(STDIN_FILENO, &curr_char, 1);
 		if (ret == -1 || (ret == 0 && buff_read == 0))
@@ -52,29 +41,17 @@ ssize_t our_getline(char **lineptr, size_t *num, FILE *stream)
 			buff_read++;
 			break;
 		}
-
 		/* if the buffer is full realloc the buffer to be one byte larger */
-
 		if (buff_read >= 127)
 			buffer = realloc(buffer, buff_read + 1);
 
 		buffer[buff_read] = curr_char;
 		buff_read++;
 	}
-
-	/* store a null character at the end of the buffer */
-
-	buffer[buff_read] = '\0';
-
-	/* set the lineptr to the buffe address */
-	/* and the num to size of the buffer */
-
-	*lineptr = buffer;
-	*num = buff_read;
-
-	/* return the number of characters in the line */
-
-	line_len = buff_read;
+	buffer[buff_read] = '\0';/* store a null char at end of buffer */
+	*lineptr = buffer;/* set the lineptr to the buffer address */
+	*num = buff_read;/* set the num to size of the buffer */
+	line_len = buff_read;/* return the number of characters in the line */
 	if (ret != 0)
 		buff_read = 0;
 	_comnthandle(buffer);
