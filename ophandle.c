@@ -1,7 +1,7 @@
 #include "shellheaders.h"
 
 /**
- * _comenthandle - handle comments
+ * _comnthandle - handle comments
  * by removing everything after # sign
  *
  * @input: user input or command
