@@ -22,7 +22,7 @@ void prompt_display(char **av, char **env)
 	{
 		if (isatty(STDIN_FILENO))/*isatty for interact/non interact mode check*/
 		{
-			write(0, "ENteam$ ", 8);
+			write(1, "ENteam$ ", 8);
 			fflush(stdout);
 		}
 		str = got_command(str);
