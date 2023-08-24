@@ -36,7 +36,7 @@ void prompt_display(char **av, char **env)
 		chpid = fork();
 		switch (chpid)
 		{	case -1:free(str);
-				exit(EXIT_FAILURE);
+				exit(0);
 				break;
 			case 0:
 				cmd = _cmdhandle(argv[0]);
