@@ -21,8 +21,7 @@ void prompt_display(char **av, char **env)
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))/*isatty for interact/non interact mode check*/
-		{
-			write(1, "ENteam$ ", 8);
+		{	write(1, "ENteam$ ", 8);
 			fflush(stdout);
 		}
 		str = got_command(str);
@@ -37,8 +36,9 @@ void prompt_display(char **av, char **env)
 		chpid = fork();
 		switch (chpid)
 		{	case -1:/*if it is a failure*/
+				errno = 127;
 				free(str);
-				exit(EXIT_FAILURE);
+				exit(errno);
 				break;
 			case 0: /*when successul*/
 				cmd = _cmdhandle(argv[0]);
