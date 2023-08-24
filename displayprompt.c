@@ -12,9 +12,8 @@
  *
 */
 void prompt_display(char **av, char **env)
-{	char *str = NULL;
+{	char *str = NULL, *argv[MAX_COMM], *cmd;
 	int m, wtstatus;
-	char *argv[MAX_COMM], *cmd;
 	pid_t chpid; /*child process ID*/
 
 	while (1)
@@ -31,7 +30,9 @@ void prompt_display(char **av, char **env)
 		if (_strcmp(argv[0], "exit") == 0)/*Handle the exit*/
 			exit(0);
 		if (_strcmp(argv[0], "env") == 0)/*Handle the env*/
-			_printenv();
+		{	_printenv();
+			continue;
+		}
 		chpid = fork();
 		switch (chpid)
 		{	case -1:free(str);
@@ -42,14 +43,13 @@ void prompt_display(char **av, char **env)
 				if (cmd)
 					execve(cmd, argv, env);
 				if (execve(argv[0], argv, env) == -1)
-				{	printf("%s: No such file or directory\n", av[0]);
-					errno = 127;
-					exit(errno);
-				}
+					printf("%s: No such file or directory\n", av[0]);
 				exit(0);
 				break;
 			default:
 				wait(&wtstatus);
+				if (wtstatus != 0)
+					exit(127);
 				break;
 		}
 	}
@@ -72,7 +72,7 @@ char *got_command(char *cmd)
 	{
 		free(str);
 		free(cmd);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 	in = 0;
 	while (str[in])
