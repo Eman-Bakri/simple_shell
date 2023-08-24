@@ -36,7 +36,7 @@ void prompt_display(char **av, char **env)
 		chpid = fork();
 		switch (chpid)
 		{	case -1:free(str);
-				exit(0);
+				exit(EXIT_FAILURE);
 				break;
 			case 0:
 				cmd = _cmdhandle(argv[0]);
@@ -44,7 +44,7 @@ void prompt_display(char **av, char **env)
 					execve(cmd, argv, env);
 				if (execve(argv[0], argv, env) == -1)
 					printf("%s: No such file or directory\n", av[0]);
-				exit(0);
+				free(cmd);
 				break;
 			default:
 				wait(&wtstatus);
