@@ -11,7 +11,7 @@ void mem_env(void)
 {
 	int x;
 
-	for (x = 0; environ[x]; x++)
+	for (x = 1; environ[x]; x++)
 	{
 	/*free the memory allocated for the current environment variable*/
 		free(environ[x]);
