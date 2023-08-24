@@ -26,11 +26,14 @@ void prompt_display(char **av, char **env)
 		m = 0;
 		argv[m] = _mystrsplit(str, " ");
 		while (argv[m])
+		{
 			argv[++m] = _mystrsplit(NULL, " ");
-		if (_strcmp(argv[0], "exit") == 0)/*Handle the exit*/
+		}
+		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
 			exit(0);
-		if (_strcmp(argv[0], "env") == 0)/*Handle the env*/
-		{	_printenv();
+		if (strcmp(argv[0], "env") == 0)/*Handle the env*/
+		{
+			_printenv();
 			continue;
 		}
 		chpid = fork();
@@ -42,7 +45,7 @@ void prompt_display(char **av, char **env)
 				cmd = _cmdhandle(argv[0]);
 				if (cmd)
 					execve(cmd, argv, env);
-				if (execve(cmd, argv, env) == -1)
+				if (execve(argv[0], argv, env) == -1)
 					printf("%s: No such file or directory\n", av[0]);
 				free(cmd);
 				break;
@@ -83,3 +86,4 @@ char *got_command(char *cmd)
 	}
 	return (str);
 }
+
