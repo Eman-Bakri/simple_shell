@@ -10,14 +10,14 @@ void free_env(void);
 
 void mem_env(void)
 {
-	int x;
+	int y;
 
 	for (x = 1; environ[x]; x++)
 	{
 	/*free the memory allocated for the current environment variable*/
 		free(environ[x]);
 	}
-	/* free memory allocated for the array of environment variables*/
+	/* free the memory allocated for the array of environment variables*/
 	free(environ);
 }
 
