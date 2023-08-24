@@ -4,7 +4,7 @@
 void free_env(void);
 
 /**
- * mem_env - Frees the environment memory
+ * mem_env - Free the environment memory
  */
 
 void mem_env(void)
