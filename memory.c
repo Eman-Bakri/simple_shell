@@ -20,4 +20,4 @@ void mem_env(void)
 	/* free the memory allocated for the array of environment variables*/
 	free(environ);
 }
-
+free env
