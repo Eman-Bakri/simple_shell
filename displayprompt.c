@@ -77,6 +77,7 @@ char *got_command(char *cmd)
 			str[in] = 0;
 		in++;
 	}
+	free(cmd);
 	return (str);
 	free(str);
 }
