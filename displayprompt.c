@@ -72,6 +72,7 @@ char *got_command(char *cmd)
 		free(str);
 		free(cmd);
 		exit(0);
+		printf("\n");
 	}
 	in = 0;
 	while (str[in])
