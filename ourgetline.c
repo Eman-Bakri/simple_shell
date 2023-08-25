@@ -18,27 +18,27 @@ ssize_t our_getline(char **lineptr, size_t *num, FILE *stream)
 	buffer = malloc(sizeof(char) * 1024);
 	if (!buffer)
 		return (-1);/*loop to read characters,if newline exit, otherwise store*/
+	if (buffer == NULL)
+	{	perror("Memory allocation failed");
+		exit(EXIT_FAILURE);
+	}
 	while (curr_char != '\n')
 	{
 		ret = read(STDIN_FILENO, &curr_char, 1);
 		if (ret == -1 || (ret == 0 && buff_read == 0))
-		{
-			free(buffer);
+		{	free(buffer);
 			return (-1);
 		}
 		if (ret == 0 && buff_read != 0)
-		{
-			buff_read++;
+		{	buff_read++;
 			break;
 		}
 		/* if the buffer is full realloc the buffer to be one byte larger */
 		if (buff_read >= 127)
 			buffer = realloc(buffer, buff_read + 1);
-
 		buffer[buff_read] = curr_char;
 		buff_read++;
 	}
-	/*store a null character at the end of the buffer*/
 	buffer[buff_read] = '\0';/*set lineptr to buffer & num to buffer size*/
 	*lineptr = buffer;
 	*num = buff_read;/* return the number of characters in the line */
