@@ -15,7 +15,7 @@ ssize_t our_getline(char **lineptr, size_t *num, FILE *stream)
 	/*if buff_read=0,flush stream to ensures buffered data is written to stream*/
 	if (buff_read == 0)
 		fflush(stream);/*allocate buffer sized 128 characters to store the line*/
-	buffer = malloc(sizeof(char) * 128);
+	buffer = malloc(sizeof(char) * 1024);
 	if (!buffer)
 		return (-1);/*loop to read characters,if newline exit, otherwise store*/
 	while (curr_char != '\n')

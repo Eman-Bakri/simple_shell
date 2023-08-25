@@ -13,13 +13,16 @@
 */
 void prompt_display(char **av, char **env)
 {	char *str = NULL, *argv[MAX_COMM], *cmd;
-	int wtstatus;
+	int wtstatus, line_count;
 	pid_t chpid; /*child process ID*/
 
 	while (1)
 	{
 		print_prompt();
 		str = got_command(str);
+		line_count += 1;
+		if (!*str)
+			continue;
 		split_input(str, argv);
 		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
 			exit(0);
@@ -38,7 +41,7 @@ void prompt_display(char **av, char **env)
 				if (cmd)
 					execve(cmd, argv, env);
 				if (execve(argv[0], argv, env) == -1)
-					printf("%s: %s: No such file or directory\n", av[0], str);
+					printf("%s: %d: %s: No such file or directory\n", av[0], line_count, str);
 				exit(0);
 				free(cmd);
 				break;
@@ -88,7 +91,7 @@ void print_prompt(void)
 {
 	if (isatty(STDIN_FILENO)) /*for interact/non interact mode check*/
 	{
-		write(1, "ENteam$ ", 8);
+		write(1, "($) ", 4);
 		fflush(stdout);
 	}
 }
