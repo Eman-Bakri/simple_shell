@@ -13,22 +13,14 @@
 */
 void prompt_display(char **av, char **env)
 {	char *str = NULL, *argv[MAX_COMM], *cmd;
-	int m, wtstatus;
+	int wtstatus;
 	pid_t chpid; /*child process ID*/
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))/*isatty for interact/non interact mode check*/
-		{	write(1, "ENteam$ ", 8);
-			fflush(stdout);
-		}
+		print_prompt();
 		str = got_command(str);
-		m = 0;
-		argv[m] = _mystrsplit(str, " ");
-		while (argv[m])
-		{
-			argv[++m] = _mystrsplit(NULL, " ");
-		}
+		split_input(str, argv);
 		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
 			exit(0);
 		if (strcmp(argv[0], "env") == 0)/*Handle the env*/
@@ -85,5 +77,35 @@ char *got_command(char *cmd)
 		in++;
 	}
 	return (str);
+}
+/**
+ * print_prompt - print the prompt
+ * Return: void
+*/
+void print_prompt(void)
+{
+	if (isatty(STDIN_FILENO)) /*for interact/non interact mode check*/
+	{
+		write(1, "ENteam$ ", 8);
+		fflush(stdout);
+	}
+}
+/**
+ * split_input - split the given input
+ * @input: entered input
+ * @argv: argument value
+ * Return: argc value
+*/
+int split_input(char *input, char *argv[])
+{
+	int argc = 0;
+	char *token;
+
+	token = _mystrsplit(input, " ");
+	while (token != NULL) {
+		argv[argc++] = token;
+		token = _mystrsplit(NULL, " ");
+	}
+	return (argc);
 }
 

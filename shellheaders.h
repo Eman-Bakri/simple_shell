@@ -17,7 +17,8 @@ int _printenv(void);
 void _comnthandle(char *input);
 ssize_t our_getline(char **lineptr, size_t *num, FILE *stream);
 char *got_command(char *cmd);
-void *handle_builtin();
+void print_prompt();
+int split_input(char *input, char *argv[]);
 
 unsigned int _strlen(const char *str);
 char *_strcat(char *deststr, const char *srcstr);
