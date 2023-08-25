@@ -1,6 +1,7 @@
 #include "shellheaders.h"
 /**
  * handle_err - handle error message
+ * @str: string to take
  * Return: void
 */
 void handle_err(char *str)
@@ -8,7 +9,7 @@ void handle_err(char *str)
 	write(STDERR_FILENO, str, _strlen(str));
 }
 /**
- * print_err - handle error message
+ * print_err - printing error
  * Return: void
 */
 void print_error(void)
