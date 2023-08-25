@@ -39,8 +39,8 @@ void prompt_display(char **av, char **env)
 					execve(cmd, argv, env);
 				if (execve(argv[0], argv, env) == -1)
 					printf("%s: %s: No such file or directory\n", av[0], str);
+				exit(0);
 				free(cmd);
-				free(str);
 				break;
 			default:
 				wait(&wtstatus);
