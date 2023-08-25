@@ -79,3 +79,42 @@ int _exitexc(char **args)
 	exit(st);
 }
 
+/**
+ * _envset - set a new env var
+ * @name: variable name
+ * @val: variable value
+ * @ovwr: overwrite
+ * Return: 0 Success
+*/
+int _envset(const char *name, const char *val, int ovwr)
+{
+	int m = 0;
+	char *varnew;
+	if (!name || !val)
+		return (-1);
+	while (environ[m])
+	{
+		if (_strcmp(environ[m], name) == 0)
+		{
+			if (ovwr)
+			{
+				varnew = malloc(_strlen(name) + _strlen(val) + 2);
+				_strcpy(varnew, name);
+				_strcat(varnew, "=");
+				_strcat(varnew, val);
+				environ[m] = varnew;
+				return (0);
+			}
+			return(0);
+		}
+		m++;
+	}
+	varnew = malloc(_strlen(name) + _strlen(val) + 2);
+	_strcpy(varnew, name);
+	_strcat(varnew, "=");
+	_strcat(varnew, val);
+	environ[m] = varnew;
+	environ[m + 1] = NULL;
+	return (0);
+}
+
