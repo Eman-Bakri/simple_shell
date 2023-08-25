@@ -48,7 +48,7 @@ void prompt_display(char **av, char **env)
 			default:
 				wait(&wtstatus);
 				if (wtstatus != 0)
-					exit(2);
+					exit(127);
 				break;
 		}
 	}
@@ -67,7 +67,7 @@ char *got_command(char *cmd)
 
 	charCount = our_getline(&str, &tu, stdin);
 	/*Handle EOF*/
-	if (charCount == -1)
+	if (charCount == -1 || charCount == EOF)
 	{
 		free(str);
 		free(cmd);
