@@ -13,7 +13,7 @@
 */
 void prompt_display(char **av, char **env)
 {	char *str = NULL, *argv[MAX_COMM], *cmd;
-	int wtstatus, line_count;
+	int wtstatus, line_count = 0;
 	pid_t chpid; /*child process ID*/
 
 	while (1)
@@ -23,9 +23,9 @@ void prompt_display(char **av, char **env)
 		line_count += 1;
 		if (!*str)
 			continue;
-		split_input(str, argv);
+		 split_input(str, argv);
 		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
-			exit(0);
+			_exitexc(av);
 		if (strcmp(argv[0], "env") == 0)/*Handle the env*/
 		{
 			_printenv();

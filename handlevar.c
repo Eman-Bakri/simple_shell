@@ -62,4 +62,19 @@ char *_cmdhandle(char *cmd)
 	}
 	return (NULL);
 }
+/**
+ * _exitexc - execute exit
+ * @args: arguments
+ * Return: status 0 Sucess
+*/
+int _exitexc(char **args)
+{
+	int st;
+
+	if (args[1] == NULL)
+		st = 0;
+	else
+		st = atoi(args[1]);
+	exit(st);
+}
 

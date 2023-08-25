@@ -19,6 +19,7 @@ ssize_t our_getline(char **lineptr, size_t *num, FILE *stream);
 char *got_command(char *cmd);
 void print_prompt(void);
 int split_input(char *input, char *argv[]);
+int _exitexc(char **args);
 
 unsigned int _strlen(const char *str);
 char *_strcat(char *deststr, const char *srcstr);
