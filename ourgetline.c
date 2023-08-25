@@ -38,9 +38,8 @@ ssize_t our_getline(char **lineptr, size_t *num, FILE *stream)
 		buffer[buff_read] = curr_char;
 		buff_read++;
 	}
-	/* store a null character at the end of the buffer */
-	buffer[buff_read] = '\0';
-	/* set the lineptr to the buffe address and the num to size of the buffer */
+	/*store a null character at the end of the buffer*/
+	buffer[buff_read] = '\0';/*set lineptr to buffer & num to buffer size*/
 	*lineptr = buffer;
 	*num = buff_read;/* return the number of characters in the line */
 	line_len = buff_read;
