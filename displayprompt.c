@@ -41,7 +41,7 @@ void prompt_display(char **av, char **env)
 				if (cmd)
 					execve(cmd, argv, env);
 				if (execve(argv[0], argv, env) == -1)
-					printf("%s: %d: %s: No such file or directory\n", av[0], line_count, str);
+					printf("%s: %d: %s: not found\n", av[0], line_count, str);
 				exit(0);
 				free(cmd);
 				break;
