@@ -21,6 +21,8 @@ void prompt_display(char **av, char **env)
 		print_prompt();
 		str = got_command(str);
 		split_input(str, argv);
+		prog_name = av[0];
+		cmd_name = str;
 		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
 			exit(0);
 		if (strcmp(argv[0], "env") == 0)/*Handle the env*/
@@ -38,7 +40,7 @@ void prompt_display(char **av, char **env)
 				if (cmd)
 					execve(cmd, argv, env);
 				if (execve(argv[0], argv, env) == -1)
-					printf("%s: %s: No such file or directory\n", av[0], str);
+					print_error();
 				exit(0);
 				free(cmd);
 				break;
