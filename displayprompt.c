@@ -102,7 +102,8 @@ int split_input(char *input, char *argv[])
 	char *token;
 
 	token = _mystrsplit(input, " ");
-	while (token != NULL) {
+	while (token != NULL)
+	{
 		argv[argc++] = token;
 		token = _mystrsplit(NULL, " ");
 	}
