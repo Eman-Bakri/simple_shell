@@ -38,7 +38,7 @@ void prompt_display(char **av, char **env)
 				if (cmd)
 					execve(cmd, argv, env);
 				if (execve(argv[0], argv, env) == -1)
-					printf("%s: No such file or directory\n", av[0]);
+					printf("%s: %s:  No such file or directory\n", av[0], str);
 				free(cmd);
 				free(str);
 				break;
@@ -79,7 +79,6 @@ char *got_command(char *cmd)
 	}
 	free(cmd);
 	return (str);
-	free(str);
 }
 /**
  * print_prompt - print the prompt
@@ -99,7 +98,7 @@ void print_prompt(void)
  * @argv: argument value
  * Return: argc value
 */
-int split_input(char *input, char *argv[])
+char *split_input(char *input, char *argv[])
 {
 	int argc = 0;
 	char *token;
@@ -110,6 +109,6 @@ int split_input(char *input, char *argv[])
 		argv[argc++] = token;
 		token = _mystrsplit(NULL, " ");
 	}
-	return (argc);
+	return (token);
 }
 
