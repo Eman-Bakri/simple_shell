@@ -98,7 +98,7 @@ void print_prompt(void)
  * @argv: argument value
  * Return: argc value
 */
-char *split_input(char *input, char *argv[])
+int split_input(char *input, char *argv[])
 {
 	int argc = 0;
 	char *token;
@@ -109,6 +109,6 @@ char *split_input(char *input, char *argv[])
 		argv[argc++] = token;
 		token = _mystrsplit(NULL, " ");
 	}
-	return (token);
+	return (argc);
 }
 

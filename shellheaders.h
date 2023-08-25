@@ -21,7 +21,7 @@ void _comnthandle(char *input);
 ssize_t our_getline(char **lineptr, size_t *num, FILE *stream);
 char *got_command(char *cmd);
 void print_prompt(void);
-char *split_input(char *input, char *argv[]);
+int split_input(char *input, char *argv[]);
 void handle_err(char *str);
 void print_error(void);
 
