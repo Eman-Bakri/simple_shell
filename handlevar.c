@@ -60,6 +60,7 @@ char *_cmdhandle(char *cmd)
 		free(_fullcmd);
 		tkn = _mystrsplit(NULL, ":");
 	}
+	free(tkn);
 	return (NULL);
 }
 /**

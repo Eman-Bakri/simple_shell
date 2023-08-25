@@ -23,22 +23,19 @@ void prompt_display(char **av, char **env)
 		line_count += 1;
 		if (!*str)
 			continue;
-		 split_input(str, argv);
+		split_input(str, argv);
 		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
 			_exitexc(av);
 		if (strcmp(argv[0], "env") == 0)/*Handle the env*/
-		{
-			_printenv();
+		{	_printenv();
 			continue;
 		}
 		if (!str)
 			perror(av[0]);
 		else
-		{
-			chpid = fork();
+		{	chpid = fork();
 			switch (chpid)
-			{	case -1:
-					free(str);
+			{	case -1:free(str);
 					exit(EXIT_FAILURE);
 					break;
 				case 0:
