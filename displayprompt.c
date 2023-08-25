@@ -65,7 +65,7 @@ char *got_command(char *cmd)
 	ssize_t charCount;
 	int in;
 
-	charCount = our_getline(&str, &tu, stdin);
+	charCount = getline(&str, &tu, stdin);
 	/*Handle EOF*/
 	if (charCount == -1 || charCount == EOF)
 	{
@@ -92,7 +92,6 @@ void print_prompt(void)
 	if (isatty(STDIN_FILENO)) /*for interact/non interact mode check*/
 	{
 		write(1, "($) ", 4);
-		fflush(stdout);
 	}
 }
 /**
