@@ -27,7 +27,7 @@ void prompt_display(char **av, char **env)
 		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
 			_exitexc(av);
 		if (strcmp(argv[0], "setenv") == 0)/*Handle the senenv*/
-			_envset(str, str, 1);
+			_envset(argv[1], argv[2], 1);
 		if (strcmp(argv[0], "env") == 0)/*Handle the env*/
 		{	_printenv();
 			continue;
