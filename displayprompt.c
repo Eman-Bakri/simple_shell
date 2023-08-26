@@ -32,29 +32,25 @@ void prompt_display(char **av, char **env)
 		{	_printenv();
 			continue;
 		}
-		if (!str)
-			perror(av[0]);
-		else
-		{	chpid = fork();
-			switch (chpid)
-			{	case -1:free(str);
-					exit(EXIT_FAILURE);
-					break;
-				case 0:
-					cmd = _cmdhandle(argv[0]);
-					if (cmd)
-						execve(cmd, argv, env);
-					if (execve(argv[0], argv, env) == -1)
-						printf("%s: %d: %s: not found\n", av[0], line_count, str);
-					exit(0);
-					free(cmd);
-					break;
-				default:
-					wait(&wtstatus);
-					if (wtstatus != 0)
-						exit(127);
-					break;
-			}
+		chpid = fork();
+		switch (chpid)
+		{	case -1:free(str);
+				exit(EXIT_FAILURE);
+				break;
+			case 0:
+				cmd = _cmdhandle(argv[0]);
+				if (cmd)
+					execve(cmd, argv, env);
+				if (execve(argv[0], argv, env) == -1)
+					printf("%s: %d: %s: not found\n", av[0], line_count, str);
+				exit(0);
+				free(cmd);
+				break;
+			default:
+				wait(&wtstatus);
+				if (wtstatus != 0)
+					exit(127);
+				break;
 		}
 	}
 }
