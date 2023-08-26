@@ -6,7 +6,7 @@
 /**
  * own_cd - Changes the current directory.
  *
- * @cd_arg: The cd arguments.
+ * @cd_arg: The cd arguments
  *
  * Return: Always 0 (Success)
  */
@@ -37,3 +37,4 @@ int own_cd(char *cd_arg)
 		return (chdir(cd_arg));
 	}
 }
+
