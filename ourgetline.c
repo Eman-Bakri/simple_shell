@@ -1,6 +1,6 @@
 #include "shellheaders.h"
 /**
- * our_getline - Reads a line from a file
+ * our_getline - Reads a line from a file.
  * @lineptr: where the line will be stored
  * @num: stores the buffer size
  * @stream: FILE object
