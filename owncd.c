@@ -27,7 +27,7 @@ int own_cd(char *cd_arg)
 	{
 		return (chdir(".."));
 	}
-	/*if argument is - return to oldpath*/
+	/*if argument is - return to old path*/
 	else if (strcmp(cd_arg, "-") == 0)
 	{
 		return (chdir(oldpath));
