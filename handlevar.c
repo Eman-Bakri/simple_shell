@@ -90,6 +90,7 @@ int _envset(const char *name, const char *val, int ovwr)
 {
 	int m = 0;
 	char *varnew;
+
 	if (!name || !val)
 		return (-1);
 	while (environ[m])
@@ -105,7 +106,7 @@ int _envset(const char *name, const char *val, int ovwr)
 				environ[m] = varnew;
 				return (0);
 			}
-			return(0);
+			return (0);
 		}
 		m++;
 	}

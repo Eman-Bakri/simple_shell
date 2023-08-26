@@ -27,34 +27,30 @@ void prompt_display(char **av, char **env)
 		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
 			_exitexc(av);
 		if (strcmp(argv[0], "setenv") == 0)/*Handle the senenv*/
-			_envset(str, str, 1);
+			_envset(argv[1], argv[2], 1);
 		if (strcmp(argv[0], "env") == 0)/*Handle the env*/
 		{	_printenv();
 			continue;
 		}
-		if (!str)
-			perror(av[0]);
-		else
-		{	chpid = fork();
-			switch (chpid)
-			{	case -1:free(str);
-					exit(EXIT_FAILURE);
-					break;
-				case 0:
-					cmd = _cmdhandle(argv[0]);
-					if (cmd)
-						execve(cmd, argv, env);
-					if (execve(argv[0], argv, env) == -1)
-						printf("%s: %d: %s: not found\n", av[0], line_count, str);
-					exit(0);
-					free(cmd);
-					break;
-				default:
-					wait(&wtstatus);
-					if (wtstatus != 0)
-						exit(127);
-					break;
-			}
+		chpid = fork();
+		switch (chpid)
+		{	case -1:free(str);
+				exit(EXIT_FAILURE);
+				break;
+			case 0:
+				cmd = _cmdhandle(argv[0]);
+				if (cmd)
+					execve(cmd, argv, env);
+				if (execve(argv[0], argv, env) == -1)
+					printf("%s: %d: %s: not found\n", av[0], line_count, str);
+				exit(0);
+				free(cmd);
+				break;
+			default:
+				wait(&wtstatus);
+				if (wtstatus != 0)
+					exit(127);
+				break;
 		}
 	}
 }
