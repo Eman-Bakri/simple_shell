@@ -6,7 +6,7 @@
 /**
  * own_cd - Changes the current directory.
  *
- * @cd_arg: The cd argument
+ * @cd_arg: The cd argument.
  *
  * Return: Always 0 (Success)
  */
