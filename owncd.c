@@ -4,7 +4,7 @@
 #include <string.h>
 
 /**
- * own_cd - Changes the current directory
+ * own_cd - Changes the current directory.
  *
  * @cd_arg: The cd argument
  *
