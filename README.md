@@ -23,3 +23,5 @@ like comment #.
 
 owncd.c - contains function that handles cd arguments
 
+strfunctions.c - contains string functions
+
