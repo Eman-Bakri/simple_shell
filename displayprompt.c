@@ -32,6 +32,8 @@ void prompt_display(char **av, char **env)
 		{	_printenv();
 			continue;
 		}
+		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
+			own_cd(argv[1]);
 		chpid = fork();
 		switch (chpid)
 		{	case -1:free(str);

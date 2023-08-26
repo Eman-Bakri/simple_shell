@@ -21,7 +21,7 @@ void print_prompt(void);
 int split_input(char *input, char *argv[]);
 int _exitexc(char **args);
 int _envset(const char *name, const char *val, int ovwr);
-
+int own_cd(char *cd_arg);
 unsigned int _strlen(const char *str);
 char *_strcat(char *deststr, const char *srcstr);
 char *_strcpy(char *deststr, const char *srcstr);
