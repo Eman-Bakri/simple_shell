@@ -21,8 +21,6 @@ void prompt_display(char **av, char **env)
 		print_prompt();
 		str = got_command(str);
 		line_count += 1;
-		if (!*str)
-			continue;
 		split_input(str, argv);
 		if (strcmp(argv[0], "exit") == 0)/*Handle the exit*/
 			_exitexc(av);
@@ -32,7 +30,7 @@ void prompt_display(char **av, char **env)
 		{	_printenv();
 			continue;
 		}
-		if (strcmp(argv[0], "cd") == 0)/*Handle the exit*/
+		if (strcmp(argv[0], "cd") == 0)/*Handle the cd*/
 			own_cd(argv[1]);
 		chpid = fork();
 		switch (chpid)
