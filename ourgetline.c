@@ -33,7 +33,7 @@ ssize_t our_getline(char **lineptr, size_t *num, FILE *stream)
 		{	buff_read++;
 			break;
 		}
-		/* if the buffer is full realloc the buffer to be one byte larger */
+		/*if the buffer is full realloc the buffer to be one byte larger */
 		if (buff_read >= 127)
 			buffer = realloc(buffer, buff_read + 1);
 		buffer[buff_read] = curr_char;
